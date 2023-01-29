@@ -1,0 +1,20 @@
+you can find database from : https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results
+
+
+select ID,
+Name as "Players_Names",
+case when Sex ="M"then "Male" else "Female" end as Sex,
+age,
+case 
+     when age < 18  then "Under 18"
+     when age between 18 and 25 then "18-25"
+     when age between 25 and 30 then "25-30"
+     when age > 30 then "Over 30"
+     end as "Age_Group",
+     Height, Weight,
+     NOC as "Nation_code",
+substr(Games,1,instr(Games,' '))  as year,
+	 substr(Games,instr(Games,' '))  as season,
+Sport,Event,
+case when Medal ="NA" then "Not Registered" else medal end as Medal
+FROM olympic_games.athlete_events;
